@@ -1,0 +1,46 @@
+<?php
+// php inied.php filename key new-value
+function halt($reason) {
+    echo "\n";
+    echo "${reason}\n";
+    echo "\n";
+    exit(1);
+}
+
+if (count($argv) !== 4) {
+    halt("Invalid parameters. Try below:\n\nphp inied.php <filename> <key> <new-value>");
+    exit(1);
+}
+
+$file = $argv[1];
+$key = $argv[2];
+$value = $argv[3];
+$keylen = strlen($key) + 1; // include
+
+if (!file_exists($file)) {
+    halt("File is missing: ${file}");
+    exit(1);
+}
+
+$lines = file($file, FILE_IGNORE_NEW_LINES);
+$out = [];
+
+foreach ($lines as $line_num => $line) {
+    if (strlen($line) > 0) {
+        if (substr($line, 0, 1) !== "#") {
+            if (strpos($line, "=", 1) !== FALSE) {
+                list($k, $v) = explode("=", $line, 2);
+                $k = trim($k);
+                $v = trim($v);
+                if ($k === $key) {
+                    $v = $value;
+                }
+                $line = implode("=", [$k, $v]);
+            }
+        }
+    }
+    $out[] = $line;
+}
+
+file_put_contents($file, implode(PHP_EOL, $out));
+exit(0);
