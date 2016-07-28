@@ -4,7 +4,7 @@
 # - CentOS 7.0
 # - 2GB of RAM is recommended
 #
-# curl -sS http://automate.capabilify.com/repositories/continuum.sh | sudo bash
+# curl -sS https://raw.githubusercontent.com/chonla/continuum/master/repositories/continuum.sh | sudo bash
 
 HOST_NAME=continuum
 GITLAB_DOMAIN=${HOST_NAME}.ar-bro.net
