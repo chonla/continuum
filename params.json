@@ -1,6 +1,6 @@
 {
   "name": "Continuum",
   "tagline": "AR-BRO predefined packages",
-  "body": "### Continuum\r\nContinuum ถูกสร้างขึ้นเพื่อใช้ในการติดตั้งเครื่องบน (AR-BRO Cloud)[http://www.ar-bro.com]\r\n\r\n### Continuum package\r\nContinuum ประกอบด้วย PHP 7 + GitLab + Jenkins + Composer\r\n\r\n### วิธีติดตั้ง Continuum\r\n```sh\r\ncurl -sS https://raw.githubusercontent.com/chonla/continuum/master/repositories/continuum.sh | sudo bash\r\n```\r\n\r\n### แจ้งเพื่อทราบ\r\nContinuum ไม่ได้เป็นของ AR-BRO Cloud",
+  "body": "### Continuum\r\nContinuum ถูกสร้างขึ้นเพื่อใช้ในการติดตั้งเครื่องบน [AR-BRO Cloud](http://www.ar-bro.com)\r\n\r\n### Continuum package\r\nContinuum ประกอบด้วย PHP 7 + GitLab + Jenkins + Composer\r\n\r\n### วิธีติดตั้ง Continuum\r\n```sh\r\ncurl -sS https://raw.githubusercontent.com/chonla/continuum/master/repositories/continuum.sh | sudo bash\r\n```\r\n\r\n### แจ้งเพื่อทราบ\r\nContinuum ไม่ได้เป็นของ [AR-BRO Cloud](http://www.ar-bro.com) แต่เป็นของ [chonla](https://github.com/chonla)",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
