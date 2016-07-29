@@ -1,20 +1,32 @@
 <?php
 // php inied.php filename key new-value
 function halt($reason) {
-    echo "\n";
-    echo "${reason}\n";
-    echo "\n";
+    out();
+    out($reason);
+    out();
     exit(1);
 }
 
-if (count($argv) !== 4) {
-    halt("Invalid parameters. Try below:\n\nphp inied.php <filename> <key> <new-value>");
+function out($text = "") {
+    echo "${text}\n";
+}
+
+if ($argc !== 4 && $argc !== 5) {
+    halt("Invalid parameters. Try below:\n\nphp inied.php <filename> <key> <new-value> [delim]\n\ndelim: delimiter (default is =, use _SPACE_ to set delimiter to space)");
     exit(1);
 }
 
 $file = $argv[1];
 $key = $argv[2];
 $value = $argv[3];
+$delim = "=";
+if ($argc === 5) {
+    $delim = $argv[4];
+    if ($delim === "_SPACE_") {
+        $delim = " ";
+    }
+}
+out("Delimiter: [${delim}]");
 $keylen = strlen($key) + 1; // include
 
 if (!file_exists($file)) {
@@ -22,24 +34,31 @@ if (!file_exists($file)) {
     exit(1);
 }
 
+out("Replace text in ${file}");
 $lines = file($file, FILE_IGNORE_NEW_LINES);
 $out = [];
+$replaced = false;
 
 foreach ($lines as $line_num => $line) {
     if (strlen($line) > 0) {
         if (substr($line, 0, 1) !== "#") {
-            if (strpos($line, "=", 1) !== FALSE) {
-                list($k, $v) = explode("=", $line, 2);
+            if (strpos($line, $delim) !== FALSE) {
+                list($k, $v) = explode($delim, $line, 2);
                 $k = trim($k);
                 $v = trim($v);
                 if ($k === $key) {
+                    $replaced = true;
+                    echo "${k} found on line #${line_num}\n";
                     $v = $value;
                 }
-                $line = implode("=", [$k, $v]);
+                $line = implode($delim, [$k, $v]);
             }
         }
     }
     $out[] = $line;
+}
+if (!$replaced) {
+    echo "No replacement is made.\n";
 }
 
 file_put_contents($file, implode(PHP_EOL, $out));

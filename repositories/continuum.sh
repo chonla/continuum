@@ -53,7 +53,7 @@ install_git_lab ()
     sudo systemctl reload firewalld
     curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
     sudo yum install -y gitlab-ce
-    sudo php ~/continuum_toolbox/inied.php /etc/gitlab/gitlab.rb external_url "'"${GITLAB_URL}"'"
+    sudo php ~/continuum_toolbox/inied.php /etc/gitlab/gitlab.rb external_url "'"${GITLAB_URL}"'" _SPACE_
     sudo gitlab-ctl reconfigure
     sudo gitlab-ctl restart
 }
