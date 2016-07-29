@@ -47,7 +47,7 @@ install_git_lab ()
     sudo yum install -y firewalld
     systemctl unmask firewalld
     systemctl enable firewalld
-    systemctl start firewalld
+    systemctl restart firewalld
     sudo firewall-cmd --permanent --add-service=http
     sudo firewall-cmd --permanent --add-port=${GITLAB_PORT}/tcp
     sudo systemctl reload firewalld
@@ -69,6 +69,7 @@ install_jenkins ()
     echo "Installing Jenkins"
     sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
     sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    systemctl restart firewalld
     sudo firewall-cmd --permanent --add-service=http
     sudo firewall-cmd --permanent --add-port=${JENKINS_PORT}/tcp
     sudo systemctl reload firewalld
