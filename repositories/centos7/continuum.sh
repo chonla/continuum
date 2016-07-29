@@ -78,6 +78,8 @@ install_jenkins ()
     sudo php ~/continuum_toolbox/inied.php /etc/sysconfig/jenkins JENKINS_JAVA_OPTIONS '"'-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true'"'
     sudo chkconfig jenkins on
     systemctl start jenkins
+    echo "Use the following secret to unlock Jenkins"
+    cat /var/lib/jenkins/secrets/initialAdminPassword
 }
 
 main ()
