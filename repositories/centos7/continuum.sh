@@ -22,7 +22,7 @@ set_host_name ()
 install_tools ()
 {
     echo "Install Tools"
-    wget http://automate.capabilify.com/tools/inied.php.txt -O /tmp/inied.php
+    wget https://raw.githubusercontent.com/chonla/continuum/master/tools/inied.php.txt -O /tmp/inied.php
     mkdir ~/continuum_toolbox/
     mv /tmp/inied.php ~/continuum_toolbox/
 }
