@@ -19,10 +19,13 @@ if ($argc !== 4 && $argc !== 5) {
 $file = $argv[1];
 $key = $argv[2];
 $value = $argv[3];
+$value = str_replace("_SPACE_", " ", $value);
 $delim = "=";
 if ($argc === 5) {
     $delim = $argv[4];
-    $delim = str_replace("_SPACE_", " ", $delim);
+    if ($delim === "_SPACE_") {
+        $delim = " ";
+    }
 }
 out("Delimiter: [${delim}]");
 $keylen = strlen($key) + 1; // include
