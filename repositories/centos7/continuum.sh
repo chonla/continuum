@@ -83,7 +83,7 @@ install_jenkins ()
 show_jenkins_secret ()
 {
     echo "Use the following secret to unlock Jenkins"
-    cat /var/lib/jenkins/secrets/initialAdminPassword
+    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 }
 
 main ()
