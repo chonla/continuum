@@ -22,9 +22,7 @@ $value = $argv[3];
 $delim = "=";
 if ($argc === 5) {
     $delim = $argv[4];
-    if ($delim === "_SPACE_") {
-        $delim = " ";
-    }
+    $delim = str_replace("_SPACE_", " ", $delim);
 }
 out("Delimiter: [${delim}]");
 $keylen = strlen($key) + 1; // include

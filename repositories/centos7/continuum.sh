@@ -75,7 +75,7 @@ install_jenkins ()
     sudo systemctl reload firewalld
     sudo yum install -y jenkins
     sudo php ~/continuum_toolbox/inied.php /etc/sysconfig/jenkins JENKINS_PORT '"'${JENKINS_PORT}'"'
-    sudo php ~/continuum_toolbox/inied.php /etc/sysconfig/jenkins JENKINS_JAVA_OPTIONS '"'-Djava.awt.headless=true -Djava.net.preferIPv4Stack=true'"'
+    sudo php ~/continuum_toolbox/inied.php /etc/sysconfig/jenkins JENKINS_JAVA_OPTIONS '"'-Djava.awt.headless=true_SPACE_-Djava.net.preferIPv4Stack=true'"'
     sudo chkconfig jenkins on
     systemctl start jenkins
 }
